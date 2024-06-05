@@ -8,3 +8,10 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 Checkout (LIVE) :   https://tomato-food-del.netlify.app/
+
+
+
+• Created user-friendly interface with React and CSS for smooth navigation.
+• Simplified browsing via food item categorization for easy exploration.
+• Enabled seamless item addition, quantity adjustment, and checkout. 
+• Developed layout ensuring access across devices along with Login/Signup functionality
