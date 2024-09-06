@@ -67,3 +67,44 @@
     font-weight: 500;
     margin: 10px 0px;
 }
+.comment-button {
+    height: 35px;
+    width: 100px;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    color: #fffbfb;
+    border: 2px solid  #FF4C24;
+    background-color:  #FF4C24;
+}
+.enter-comment{
+    height: 40px;
+    width: 250px;
+    color: white;
+    border: 2px solid #FF4C24;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    color: #676767;
+    padding: 5px;
+}
+.submit-comment-button{
+    height: 35px;
+    width: 100px;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    color: #fffbfb;
+    border: 2px solid  #FF4C24;
+    background-color:  #FF4C24;
+}
+.wishlist-button {
+    height: 35px;
+    width: 100px;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    color: #fffbfb;
+    border: 2px solid  #FF4C24;
+    background-color:  #FF4C24;
+}

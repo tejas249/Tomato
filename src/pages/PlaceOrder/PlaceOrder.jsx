@@ -70,6 +70,8 @@ const PlaceOrder = () => {
                     <div className="payment-option">
                         <img src={assets.selector_icon} alt="" />
                         <p>COD ( Cash On Delivery )</p>
+                        <img src={assets.selector_icon} alt="" />
+                        <p> Pay with UPI </p>
                     </div>
                     <button onClick={() => placeOrder(data)}>PLACE ORDER</button>
                 </div>

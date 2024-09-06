@@ -36,6 +36,10 @@
     flex-direction: column;
     align-items: start;
     gap: 30px;
+    display: inline;
+}
+.payment-options h2 {
+    margin-top: 10px;
 }
 .payment-option{
     display: flex;
@@ -45,6 +49,7 @@
     padding: 12px 20px;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 30px;
 }
 .payment-options button{
     border: none;
@@ -53,6 +58,7 @@
     padding: 12px 30px;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 @media (max-width:700px) {
