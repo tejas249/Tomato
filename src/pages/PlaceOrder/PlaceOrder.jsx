@@ -19,66 +19,88 @@ const PlaceOrder = () => {
     })
 
     const { getTotalCartAmount, placeOrder } = useContext(StoreContext);
-
     const navigate = useNavigate();
 
+    // State to handle order success
+    const [orderSuccess, setOrderSuccess] = useState(false);
+
     const onChangeHandler = (event) => {
-        const name = event.target.name
-        const value = event.target.value
-        setData(data => ({ ...data, [name]: value }))
+        const name = event.target.name;
+        const value = event.target.value;
+        setData(data => ({ ...data, [name]: value }));
     }
 
     useEffect(() => {
         if (getTotalCartAmount() === 0) {
-            navigate('/')
+            navigate('/');
         }
-    }, [])
+    }, [getTotalCartAmount, navigate]);
+
+    const handlePlaceOrder = () => {
+        placeOrder(data);
+        setOrderSuccess(true); // Set order success state to true
+
+        // Redirect to home page after 3 seconds
+        setTimeout(() => {
+            navigate('/');
+        }, 3000);
+    }
 
     return (
         <div className='place-order'>
-            <div className="place-order-left">
-                <p className='title'>Delivery Information</p>
-                <div className="multi-field">
-                    <input type="text" name='firstName' onChange={onChangeHandler} value={data.firstName} placeholder='First name' />
-                    <input type="text" name='lastName' onChange={onChangeHandler} value={data.lastName} placeholder='Last name' />
+            {/* Order Success Message */}
+            {orderSuccess ? (
+                <div className="order-success-message">
+                    <h2>Your order has been successfully placed!</h2>
+                    <p>Redirecting to home page...</p>
                 </div>
-                <input type="email" name='email' onChange={onChangeHandler} value={data.email} placeholder='Email address' />
-                <input type="text" name='street' onChange={onChangeHandler} value={data.street} placeholder='Street' />
-                <div className="multi-field">
-                    <input type="text" name='city' onChange={onChangeHandler} value={data.city} placeholder='City' />
-                    <input type="text" name='state' onChange={onChangeHandler} value={data.state} placeholder='State' />
-                </div>
-                <div className="multi-field">
-                    <input type="text" name='zipcode' onChange={onChangeHandler} value={data.zipcode} placeholder='Zip code' />
-                    <input type="text" name='country' onChange={onChangeHandler} value={data.country} placeholder='Country' />
-                </div>
-                <input type="text" name='phone' onChange={onChangeHandler} value={data.phone} placeholder='Phone' />
-            </div>
-            <div className="place-order-right">
-                <div className="cart-total">
-                    <h2>Cart Totals</h2>
-                    <div>
-                        <div className="cart-total-details"><p>Subtotal</p><p>${getTotalCartAmount()}</p></div>
-                        <hr />
-                        <div className="cart-total-details"><p>Delivery Fee</p><p>${getTotalCartAmount() === 0 ? 0 : 5}</p></div>
-                        <hr />
-                        <div className="cart-total-details"><b>Total</b><b>${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 5}</b></div>
+            ) : (
+                <>
+                    <div className="place-order-left">
+                        <p className='title'>Delivery Information</p>
+                        <div className="multi-field">
+                            <input type="text" name='firstName' onChange={onChangeHandler} value={data.firstName} placeholder='First name' />
+                            <input type="text" name='lastName' onChange={onChangeHandler} value={data.lastName} placeholder='Last name' />
+                        </div>
+                        <input type="email" name='email' onChange={onChangeHandler} value={data.email} placeholder='Email address' />
+                        <input type="text" name='street' onChange={onChangeHandler} value={data.street} placeholder='Street' />
+                        <div className="multi-field">
+                            <input type="text" name='city' onChange={onChangeHandler} value={data.city} placeholder='City' />
+                            <input type="text" name='state' onChange={onChangeHandler} value={data.state} placeholder='State' />
+                        </div>
+                        <div className="multi-field">
+                            <input type="text" name='zipcode' onChange={onChangeHandler} value={data.zipcode} placeholder='Zip code' />
+                            <input type="text" name='country' onChange={onChangeHandler} value={data.country} placeholder='Country' />
+                        </div>
+                        <input type="text" name='phone' onChange={onChangeHandler} value={data.phone} placeholder='Phone' />
                     </div>
-                </div>
-                <div className="payment-options">
-                    <h2>Select Payment Method</h2>
-                    <div className="payment-option">
-                        <img src={assets.selector_icon} alt="" />
-                        <p>COD ( Cash On Delivery )</p>
-                        <img src={assets.selector_icon} alt="" />
-                        <p> Pay with UPI </p>
-                    </div>
-                    <button onClick={() => placeOrder(data)}>PLACE ORDER</button>
-                </div>
 
-            </div>
+                    <div className="place-order-right">
+                        <div className="cart-total">
+                            <h2>Cart Totals</h2>
+                            <div>
+                                <div className="cart-total-details"><p>Subtotal</p><p>${getTotalCartAmount()}</p></div>
+                                <hr />
+                                <div className="cart-total-details"><p>Delivery Fee</p><p>${getTotalCartAmount() === 0 ? 0 : 5}</p></div>
+                                <hr />
+                                <div className="cart-total-details"><b>Total</b><b>${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 5}</b></div>
+                            </div>
+                        </div>
+                        <div className="payment-options">
+                            <h2>Select Payment Method</h2>
+                            <div className="payment-option">
+                                <img src={assets.selector_icon} alt="" />
+                                <p>COD ( Cash On Delivery )</p>
+                                <img src={assets.selector_icon} alt="" />
+                                <p> Pay with UPI </p>
+                            </div>
+                            <button onClick={handlePlaceOrder}>PLACE ORDER</button>
+                        </div>
+                    </div>
+                </>
+            )}
         </div>
-    )
+    );
 }
 
-export default PlaceOrder
+export default PlaceOrder;
